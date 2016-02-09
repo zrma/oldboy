@@ -4,9 +4,6 @@
     <Filter Include="Fmod">
       <UniqueIdentifier>{f8e3df5f-250f-49c0-99b7-31b6fb6d08b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BandiVideo">
-      <UniqueIdentifier>{826ee267-37db-4a02-bdd3-185f6deb304b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TinyXML">
       <UniqueIdentifier>{0be61913-ac69-4c08-af03-688490ad4e53}</UniqueIdentifier>
     </Filter>
@@ -154,23 +151,8 @@
     <ClInclude Include="LibraryFmod\fmod_output.h">
       <Filter>Fmod</Filter>
     </ClInclude>
-    <ClInclude Include="LibraryBandi\BandiVid.h">
-      <Filter>BandiVideo</Filter>
-    </ClInclude>
-    <ClInclude Include="LibraryBandi\BandiVideoLibrary.h">
-      <Filter>BandiVideo</Filter>
-    </ClInclude>
-    <ClInclude Include="LibraryBandi\BandiVideoTexture.h">
-      <Filter>BandiVideo</Filter>
-    </ClInclude>
-    <ClInclude Include="LibraryBandi\BandiVideoTexture_DX9.h">
-      <Filter>BandiVideo</Filter>
-    </ClInclude>
     <ClInclude Include="RMsound.h">
       <Filter>RhythmMatch\Sound Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="RMvideoPlayer.h">
-      <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="RMprintConsole.h">
       <Filter>MainArea</Filter>
@@ -407,15 +389,6 @@
     </ClCompile>
     <ClCompile Include="RMlabelManager.cpp">
       <Filter>RhythmMatch\Label</Filter>
-    </ClCompile>
-    <ClCompile Include="LibraryBandi\BandiVideoLibrary.cpp">
-      <Filter>BandiVideo</Filter>
-    </ClCompile>
-    <ClCompile Include="LibraryBandi\BandiVideoTexture_DX9.cpp">
-      <Filter>BandiVideo</Filter>
-    </ClCompile>
-    <ClCompile Include="RMvideoPlayer.cpp">
-      <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="RMprintConsole.cpp">
       <Filter>MainArea</Filter>

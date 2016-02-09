@@ -15,7 +15,6 @@
 #include "RMJudgeManager.h"
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
-#include "RMvideoPlayer.h"
 #include "RMxmlLoader.h"
 #include "RMnoteManager.h"
 #include "RMresultManager.h"
@@ -55,7 +54,7 @@ CRMmainLoop::CRMmainLoop(void):
 	m_ElapsedTime(0),
 	m_FpsCheckTime(0),
 	m_MusicSelectIndex(0),
-	m_SceneType(SCENE_OPENING),
+	m_SceneType(SCENE_TITLE),
 	m_Hwnd(NULL),
 	m_playMode(MODE_NONE)
 {
@@ -126,24 +125,6 @@ void CRMmainLoop::RunMessageLoop()
 		MessageBox( NULL, ERROR_SOUND_LOADING, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return;
 	}
-	//===================================================================
-	// 동영상 출력 부분
-	hr = CRMvideoPlayer::GetInstance()->CreateFactory();
-	
-	if ( hr == S_OK )
-	{
-		CRMvideoPlayer::GetInstance()->StartVideo();
-	}
-	else
-	{
-		hr = GoNextScene();
-		// 동영상 재생을 위한 초기화에 실패 했을 경우 동영상 재생 패스
-		if ( hr != S_OK )
-		{
-			MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-			return;
-		}
-	}
 
 	hr = CreateObject();
 	if ( hr != S_OK )
@@ -160,7 +141,6 @@ void CRMmainLoop::RunMessageLoop()
 		{
 			if ( msg.message == WM_QUIT )
 			{
-				CRMvideoPlayer::GetInstance()->DestoryFactory();
 				return;
 			}
 			TranslateMessage(&msg);
@@ -168,24 +148,6 @@ void CRMmainLoop::RunMessageLoop()
 		}
 		else
 		{
-			if ( m_SceneType == SCENE_OPENING )
-			{
-				CRMvideoPlayer::GetInstance()->RenderVideo();
-
-				CRMinput::GetInstance()->UpdateKeyState();
-				if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP )
-				{
-					CRMvideoPlayer::GetInstance()->DestoryFactory();
-					hr = GoNextScene();
-
-					if ( hr != S_OK )
-					{
-						MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-						return;
-					}
-				}
-				continue;
-			}
 #ifdef _DEBUG
 			m_NowTime = timeGetTime();
 
@@ -1204,13 +1166,6 @@ HRESULT CRMmainLoop::GoNextScene()
 {
 	HRESULT hr = S_FALSE;
 
-	if ( m_SceneType == SCENE_OPENING )
-	{
-		m_SceneType = SCENE_TITLE;
-		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
-		return S_OK;
-	}
-
 	if ( m_SceneType == SCENE_TITLE )
 	{
 		if(m_playMode != MODE_TUTORIAL)
@@ -1476,7 +1431,6 @@ HRESULT CRMmainLoop::GoPrevScene()
 
 	if ( m_SceneType == SCENE_TITLE )
 	{
-		CRMvideoPlayer::GetInstance()->DestoryFactory();
 		PostMessage( m_Hwnd, WM_DESTROY, 0, 0 );
 		return S_OK;
 	}
