@@ -10,13 +10,22 @@ inline void SafeRelease(T* &p)
 	}
 }
 
-
 template <typename T>
 inline void SafeDelete(T* &p)
 {
 	if(p != nullptr)
 	{
 		delete p;
+		p = nullptr;
+	}
+}
+
+template <typename T>
+inline void SafeDeleteArray(T* &p)
+{
+	if (p != nullptr)
+	{
+		delete[] p;
 		p = nullptr;
 	}
 }

@@ -328,11 +328,9 @@
     <ClInclude Include="RMchildTutorialPress.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="oldboy.cpp">
-      <Filter>MainArea</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>MainArea</Filter>
     </ClCompile>
@@ -560,6 +558,10 @@
     </ClCompile>
     <ClCompile Include="RMchildTutorialPress.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="Oldboy.cpp">
+      <Filter>MainArea</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

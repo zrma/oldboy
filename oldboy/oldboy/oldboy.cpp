@@ -39,14 +39,17 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-
-#ifdef _PRINT_CONSOLE
-
-
 	// 메모리 디버깅 옵션 부분
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	// 디버깅용 콘솔 헤더가 포함 되어 있을 때에만 싱글톤으로 콘솔을 생성함
+	// 메모리 릭을 체크하려면 아래의 #### 칸에 릭 난 곳 { 숫자 } 표기 된 숫자를 넣어주면 됩니다.
+	// _CrtSetBreakAlloc( #### );
+	// _CrtSetBreakAlloc( 192 );
+
+	// SetUnhandledExceptionFilter( ExceptionFilter );
+
+#ifdef _PRINT_CONSOLE
+	// 디버깅용 콘솔 헤더가 포함 되어 있을 때만 싱글톤으로 콘솔을 생성함
 	CRMprintConsole::GetInstance();
 #endif // _PRINT_CONSOLE
 
