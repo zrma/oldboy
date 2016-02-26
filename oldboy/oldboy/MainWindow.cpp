@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MainWindow.h"
+#include "GameManager.h"
 
 
 MainWindow::MainWindow()
@@ -156,7 +157,7 @@ LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) const
 		int MouseX = LOWORD(lParam);
 		int MouseY = HIWORD(lParam);
 		// MouseManager::GetInstance()->MoveMousePosition(MouseX, MouseY);
-		//MouseManager::GetInstance()->MoveHiddenCursorToCenter();
+		// MouseManager::GetInstance()->MoveHiddenCursorToCenter();
 
 	}
 	return 0;
@@ -178,14 +179,11 @@ int MainWindow::RunGame() const
 {
 	MSG msg = { 0, };
 
-	// TASK - 메인 루프 작성
-	/*
 	if (false == GameManager::GetInstance()->Init())
 	{
 		// 사실 여기 이렇게 그냥 두었지만,
 		// Init() 함수 내부에서 방어 코드 종류별로 케바케로 실패 뜬 부분 전부 잡아서 Release() 해줘야 됨.
 		GameManager::GetInstance()->Destroy();
-		GameManager::Release();
 
 		MessageBox(m_HandleOfWindow, L"Gama Manager Initialization Error", L"Game Manager Init Error!", MB_ICONINFORMATION | MB_OK);
 		SendMessage(m_HandleOfWindow, WM_DESTROY, NULL, NULL);
@@ -203,13 +201,11 @@ int MainWindow::RunGame() const
 		if (false == GameManager::GetInstance()->Process())
 		{
 			GameManager::GetInstance()->Destroy();
-			GameManager::Release();
 			PostQuitMessage(0);
 			break;
 		}
 	}
-	*/
-
+	
 	return (int)msg.wParam;
 }
 

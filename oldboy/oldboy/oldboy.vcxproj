@@ -87,6 +87,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="LibraryFmod\fmod.h" />
     <ClInclude Include="LibraryFmod\fmod.hpp" />
     <ClInclude Include="LibraryFmod\fmod_codec.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="LibraryTinyXML\action_store.cpp" />
     <ClCompile Include="LibraryTinyXML\htmlutil.cpp" />
     <ClCompile Include="LibraryTinyXML\lex_util.cpp" />
